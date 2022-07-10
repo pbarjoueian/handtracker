@@ -2,7 +2,7 @@
 
 This is a simple program that uses hand gestures to control the volume of a computer. I created this repo for fun and to learn more about computer vision.
 
- ![handtracker screenshot](/assets/handtracker.png)
+ ![handtracker screenshot](/assets/handtracker.jpg)
 
 ## How it works?
 
