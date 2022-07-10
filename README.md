@@ -2,6 +2,8 @@
 
 This is a simple program that uses hand gestures to control the volume of a computer. I created this repo for fun and to learn more about computer vision.
 
+ ![handtracker screenshot](/assets/handtracker.png)
+
 ## How it works?
 
 1. If you clap then your computer will be muted.
