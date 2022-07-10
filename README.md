@@ -30,5 +30,5 @@ This is a simple program that uses hand gestures to control the volume of a comp
 
 ## Resources
 
-1. https://www.computervision.zone/courses/gesture-volume-control/
-2. https://www.section.io/engineering-education/creating-a-hand-gesture-volume-controller-using-python-and-pycharm/
+* https://www.computervision.zone/courses/gesture-volume-control/
+* https://www.section.io/engineering-education/creating-a-hand-gesture-volume-controller-using-python-and-pycharm/
