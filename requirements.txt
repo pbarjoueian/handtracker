@@ -1,2 +1,3 @@
 mediapipe==0.8.3
 opencv-python==4.5.4.58
+pipenv==2022.7.4

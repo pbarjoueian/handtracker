@@ -1,4 +1,3 @@
-import time
 import cv2
 
 from HandTackingModule import HandDetector
@@ -22,11 +21,14 @@ while True:
         # print(len(lmList1),lmList1)
         # print(bbox1)
         # print(centerPoint1)
-        
+
         fingers1 = detector.fingersUp(hand1)
-        
-        # length, info, img = detector.findDistance(lmList1[8], lmList1[12], img) # with draw
-        # length, info = detector.findDistance(lmList1[8], lmList1[12])  # no draw
+
+        # with draw
+        # length, info, img = detector.findDistance(lmList1[8], lmList1[12], img)
+
+        # no draw
+        # length, info = detector.findDistance(lmList1[8], lmList1[12])
 
         if len(hands) == 2:
             hand2 = hands[1]
@@ -44,7 +46,7 @@ while True:
             length, info, img = detector.findDistance(centerPoint1, centerPoint2, img)
 
             if 75 <= length <= 195:
-                length=300
+                length = 300
                 print("Mute")
         else:
             # Picking up the thumb and index finger from the land mark list
