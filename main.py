@@ -1,11 +1,9 @@
 from math import floor
 
-import alsaaudio
+import applescript
 import cv2
 
 from HandTackingModule import HandDetector
-
-am = alsaaudio.Mixer()
 
 cap = cv2.VideoCapture(0)
 detector = HandDetector(detectionCon=0.8, maxHands=2)
@@ -42,7 +40,7 @@ def main():
 
                 # Mute system if detected a clap
                 if 75 <= length <= 195:
-                    am.setvolume(0)
+                    applescript.AppleScript("set volume output volume 0").run()
 
             else:
                 # Picking up the thumb and index finger from the land mark list
@@ -63,7 +61,9 @@ def main():
                     volume_percentage if volume_percentage <= 100 else 100
                 )
                 volume_percentage = volume_percentage if volume_percentage > 5 else 5
-                am.setvolume(volume_percentage)
+                applescript.AppleScript(
+                    f"set volume output volume {volume_percentage}"
+                ).run()
 
         # with draw
         cv2.imshow("Image", img)
