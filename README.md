@@ -1,4 +1,4 @@
-# Control computer volume using hand gestures
+# Control computer volume using hand gestures just for fun
 
 This is a simple program that uses hand gestures to control the volume of a computer. I created this repo for fun and to learn more about computer vision.
 
