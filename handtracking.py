@@ -1,6 +1,11 @@
+from math import floor
+
+import alsaaudio
 import cv2
 
 from HandTackingModule import HandDetector
+
+am = alsaaudio.Mixer()
 
 cap = cv2.VideoCapture(0)
 detector = HandDetector(detectionCon=0.8, maxHands=2)
@@ -8,7 +13,6 @@ detector = HandDetector(detectionCon=0.8, maxHands=2)
 while True:
     success, img = cap.read()
     hands, img = detector.findHands(img)  # With Draw
-    # hands = detector.findHands(img, draw=False)  # No Draw
 
     if hands:
         # Hand 1
@@ -18,17 +22,7 @@ while True:
         centerPoint1 = hand1["center"]  # center of the hand cx,cy
         handType1 = hand1["type"]  # Hand Type Left or Right
 
-        # print(len(lmList1),lmList1)
-        # print(bbox1)
-        # print(centerPoint1)
-
         fingers1 = detector.fingersUp(hand1)
-
-        # with draw
-        # length, info, img = detector.findDistance(lmList1[8], lmList1[12], img)
-
-        # no draw
-        # length, info = detector.findDistance(lmList1[8], lmList1[12])
 
         if len(hands) == 2:
             hand2 = hands[1]
@@ -39,15 +33,13 @@ while True:
 
             fingers2 = detector.fingersUp(hand2)
 
-            # print(fingers1, fingers2)
-            # length, info, img = detector.findDistance(lmList1[8], lmList2[8], img)
-
             # with draw
             length, info, img = detector.findDistance(centerPoint1, centerPoint2, img)
 
+            # Mute system if detected a clap
             if 75 <= length <= 195:
-                length = 300
-                print("Mute")
+                am.setvolume(0)
+
         else:
             # Picking up the thumb and index finger from the land mark list
             thumb_tip, index_finger_tip = lmList1[4], lmList1[8]
@@ -58,9 +50,12 @@ while True:
 
             # with draw
             length, info, img = detector.findDistance(thumb_tip, index_finger_tip, img)
-            if length <= 7:
-                print(length)
-                print("Voume down")
+
+            # Set volume percentage by hand gestures
+            volume_percentage = floor((length * 100) / 180)
+            volume_percentage = volume_percentage if volume_percentage <= 100 else 100
+            volume_percentage = volume_percentage if volume_percentage > 5 else 5
+            am.setvolume(volume_percentage)
 
     # with draw
     cv2.imshow("Image", img)
