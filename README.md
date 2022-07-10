@@ -4,7 +4,7 @@ This is a simple program that uses hand gestures to control the volume of a comp
 
  ![handtracker screenshot](/assets/handtracker.jpg)
 
-## How it works?
+## How does it work?
 
 1. If you clap then your computer will be muted.
 2. By decreasing and increasing the distance between your thumb and index fingers you can control the computer volume.
@@ -13,7 +13,7 @@ This is a simple program that uses hand gestures to control the volume of a comp
 
 * A computer with a webcam
 * Python 3.8+
-* Install `libasound2-dev` using the followng command:
+* Install `libasound2-dev` using the following command:
 ```sudo apt-get install libasound2-dev```
 * Install the required packages using one of the followings:
   * `pip install requirements.txt`
